@@ -12,13 +12,13 @@ body{
     -webkit-font-smoothing: antialiased;
 }
 
-/* NAV */
+/* 1. ヘッダーを画面最上部に完全固定 */
 .navbar{
     position:fixed;
     top:0;
+    left:0;
     width:100%;
     height: 48px; 
-    padding: 0 20px; 
     display:flex;
     justify-content: center; 
     align-items: center;
@@ -35,11 +35,15 @@ body{
     letter-spacing: 0.05em;
 }
 
-/* 新設：上部のSNSボタンエリア */
+/* 2. SNSボタンエリアもその下に完全固定（絶対に隠れない） */
 .top-sns-area {
-    margin-top: 48px;
-    padding: 20px 16px 10px 16px;
+    position: fixed;
+    top: 48px; /* ヘッダーのすぐ下 */
+    left: 0;
     width: 100%;
+    padding: 16px;
+    background: #ffffff;
+    z-index: 999;
     display: flex;
     justify-content: center;
 }
@@ -49,7 +53,7 @@ body{
     justify-content:center;
     gap: 12px;
     width: 100%;
-    max-width: 500px; /* 動画の最大幅と合わせる */
+    max-width: 500px;
 }
 
 .sns-btn {
@@ -80,9 +84,9 @@ body{
     transform: scale(0.97);
 }
 
-/* MAIN SECTION */
+/* 3. TikTok動画エリア：ヘッダーとボタンの分、大幅に下に下げる */
 .vlogs{
-    padding-top: 5px;
+    margin-top: 130px; /* ここで大幅に下に下げて被りを回避！ */
     padding-bottom: 40px;
     display: flex;
     justify-content: center;
@@ -106,13 +110,13 @@ body{
     padding: 0 16px;
 }
 
-/* TikTok公式プレイヤーのサイズ調整 */
+/* TikTokプレイヤーのサイズをスマホ画面に合わせて最適化 */
 .tiktok-embed {
     margin: 0 auto !important;
     min-width: 325px !important;
     max-width: 500px !important;
     width: 100% !important;
-    height: 65vh !important; 
+    height: 60vh !important; /* 縦に伸びすぎないように制限 */
     box-shadow: 0 4px 20px rgba(0,0,0,0.08);
     border-radius: 8px;
     overflow: hidden;
@@ -120,8 +124,11 @@ body{
 
 /* スマホ用の最終微調整 */
 @media(max-width: 480px) {
+    .vlogs {
+        margin-top: 120px; /* スマホ用に位置を微調整 */
+    }
     .tiktok-embed {
         min-width: 290px !important;
-        height: 60vh !important;
+        height: 58vh !important;
     }
 }
