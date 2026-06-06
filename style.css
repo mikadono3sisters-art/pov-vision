@@ -51,11 +51,6 @@ html {
     font-weight: 400;
     letter-spacing: 0.02em;
     opacity: 0.8;
-    transition: opacity 0.2s ease;
-}
-
-.nav-links a:hover {
-    opacity: 1;
 }
 
 /* MAIN SECTION */
@@ -63,19 +58,33 @@ html {
     padding: 72px 10% 80px 10%; 
 }
 
-/* GRID */
+/* 横スクロールのためのコンテナ */
+.scroll-container {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 15px; /* スクロールバー用の余白 */
+}
+
+/* スクロールバーをすっきり見せる（非表示にする） */
+.scroll-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* GRID / FLEX BASE */
 .card-grid{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); 
+    display: flex;
     gap: 24px;
     width: 100%;
 }
 
 /* CARD & TIKTOK WRAPPER */
 .card{
-    width:100%;
+    flex: 0 0 100%; /* パソコン・スマホ共通で1画面にビシッと収める */
+    scroll-snap-align: center;
     background: transparent; 
-    overflow:hidden;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -83,6 +92,7 @@ html {
 
 .tiktok-wrapper {
     width: 100%;
+    max-width: 500px;
     display: flex;
     justify-content: center;
 }
@@ -105,31 +115,19 @@ footer{
     color: #0066cc; 
     text-decoration: none;
     font-size: 0.9rem;
-    font-weight: 400;
-}
-
-.social-links a:hover {
-    text-decoration: underline;
 }
 
 /* RESPONSIVE */
-@media(max-width: 1024px) {
-    .card-grid {
-        grid-template-columns: repeat(2, 1fr); 
-    }
-}
-
 @media(max-width: 768px) {
     .navbar {
         padding: 0 5%;
     }
 
     .vlogs {
-        padding: 68px 5% 60px 5%; 
+        padding: 68px 5% 40px 5%; 
     }
-
-    .card-grid {
-        grid-template-columns: 1fr; 
-        gap: 24px; 
+    
+    .card {
+        flex: 0 0 90%; /* スマホでは次の動画がチラ見えして左右スクロールを促すサイズ */
     }
 }
