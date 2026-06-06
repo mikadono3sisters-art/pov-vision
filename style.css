@@ -12,11 +12,6 @@ body{
     -webkit-font-smoothing: antialiased;
 }
 
-/* スムーズスクロールの有効化 */
-html {
-    scroll-behavior: smooth;
-}
-
 /* NAV */
 .navbar{
     position:fixed;
@@ -25,7 +20,7 @@ html {
     height: 48px; 
     padding: 0 20px; 
     display:flex;
-    justify-content: center; /* ロゴを中央に */
+    justify-content: center; 
     align-items: center;
     background: rgba(255, 255, 255, 0.8);
     backdrop-filter: saturate(180%) blur(20px); 
@@ -40,41 +35,55 @@ html {
     letter-spacing: 0.05em;
 }
 
-/* 新設：最上部のSNSボタンエリア */
-.hero-section {
+/* 新設：上部のSNSボタンエリア */
+.top-sns-area {
     margin-top: 48px;
-    padding: 24px 20px 10px 20px;
+    padding: 20px 16px 10px 16px;
+    width: 100%;
     display: flex;
     justify-content: center;
-    width: 100%;
 }
 
-/* 目立つメインのSNSボタン */
-.main-sns-btn {
+.social-links{
+    display:flex;
+    justify-content:center;
+    gap: 12px;
+    width: 100%;
+    max-width: 500px; /* 動画の最大幅と合わせる */
+}
+
+.sns-btn {
+    flex: 1;
     display: inline-block;
-    width: 100%;
-    max-width: 400px;
-    padding: 14px 0;
-    background: #0066cc;
-    color: #ffffff;
-    text-align: center;
+    padding: 12px 0;
     text-decoration: none;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 600;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 102, 204, 0.2);
-    transition: all 0.2s ease;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: transform 0.1s ease;
 }
 
-.main-sns-btn:active {
-    transform: scale(0.98);
-    box-shadow: 0 2px 6px rgba(0, 102, 204, 0.2);
+.tiktok {
+    background: #111111;
+    color: #ffffff;
+}
+
+.instagram {
+    background: #f5f5f7;
+    color: #1d1d1f;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.sns-btn:active {
+    transform: scale(0.97);
 }
 
 /* MAIN SECTION */
 .vlogs{
-    padding-top: 10px;
-    padding-bottom: 30px;
+    padding-top: 5px;
+    padding-bottom: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -103,67 +112,16 @@ html {
     min-width: 325px !important;
     max-width: 500px !important;
     width: 100% !important;
-    height: 55vh !important; /* スマホ画面に収まりやすい高さ */
+    height: 65vh !important; 
     box-shadow: 0 4px 20px rgba(0,0,0,0.08);
     border-radius: 8px;
     overflow: hidden;
-}
-
-/* FOOTER & SNS LINKS AREA */
-footer{
-    text-align:center;
-    padding: 40px 20px 60px 20px;
-    background: #f5f5f7; /* 少し色を変えてエリアを分かりやすく */
-    border-top: 1px solid rgba(0,0,0,0.05);
-}
-
-.section-title {
-    font-size: 1.1rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-    letter-spacing: 0.03em;
-}
-
-.social-links{
-    display:flex;
-    justify-content:center;
-    gap: 16px;
-    width: 100%;
-    max-width: 400px;
-    margin: 0 auto;
-}
-
-.sns-btn {
-    flex: 1;
-    display: inline-block;
-    padding: 14px 0;
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 600;
-    border-radius: 8px;
-    text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
-
-.tiktok {
-    background: #111111;
-    color: #ffffff;
-}
-
-.instagram {
-    background: #ffffff;
-    color: #1d1d1f;
-    border: 1px solid rgba(0,0,0,0.1);
-}
-
-.sns-btn:active {
-    transform: scale(0.97);
 }
 
 /* スマホ用の最終微調整 */
 @media(max-width: 480px) {
     .tiktok-embed {
         min-width: 290px !important;
-        height: 50vh !important;
+        height: 60vh !important;
     }
 }
