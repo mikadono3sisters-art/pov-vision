@@ -12,6 +12,7 @@ body{
     -webkit-font-smoothing: antialiased;
 }
 
+/* スムーズスクロールの有効化 */
 html {
     scroll-behavior: smooth;
 }
@@ -24,7 +25,7 @@ html {
     height: 48px; 
     padding: 0 20px; 
     display:flex;
-    justify-content:between;
+    justify-content: center; /* ロゴを中央に */
     align-items: center;
     background: rgba(255, 255, 255, 0.8);
     backdrop-filter: saturate(180%) blur(20px); 
@@ -34,80 +35,99 @@ html {
 }
 
 .logo {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+
+/* 新設：最上部のSNSボタンエリア */
+.hero-section {
+    margin-top: 48px;
+    padding: 24px 20px 10px 20px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+/* 目立つメインのSNSボタン */
+.main-sns-btn {
+    display: inline-block;
+    width: 100%;
+    max-width: 400px;
+    padding: 14px 0;
+    background: #0066cc;
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
     font-size: 0.95rem;
     font-weight: 600;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 102, 204, 0.2);
+    transition: all 0.2s ease;
 }
 
-.nav-links {
-    list-style: none;
-    margin-left: auto;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: #0066cc;
-    font-size: 0.85rem; 
-    font-weight: 500;
+.main-sns-btn:active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 6px rgba(0, 102, 204, 0.2);
 }
 
 /* MAIN SECTION */
 .vlogs{
-    padding-top: 68px;
-    padding-bottom: 40px;
+    padding-top: 10px;
+    padding-bottom: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
 }
 
-/* 横スクロールコンテナ（画面中央にロック） */
 .scroll-container {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     max-width: 100%;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
 }
 
-.scroll-container::-webkit-scrollbar {
-    display: none; /* スクロールバーを消してすっきりさせる */
-}
-
-/* CARD（TikTokプレイヤーを真ん中に維持） */
 .card{
     flex: 0 0 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    scroll-snap-align: center;
-    padding: 0 10px;
+    padding: 0 16px;
 }
 
-/* TikTok公式プレイヤーの強制中央化とサイズ固定 */
+/* TikTok公式プレイヤーのサイズ調整 */
 .tiktok-embed {
     margin: 0 auto !important;
     min-width: 325px !important;
     max-width: 500px !important;
     width: 100% !important;
+    height: 55vh !important; /* スマホ画面に収まりやすい高さ */
     box-shadow: 0 4px 20px rgba(0,0,0,0.08);
     border-radius: 8px;
+    overflow: hidden;
 }
 
-/* FOOTER & SNS BUTTONS */
+/* FOOTER & SNS LINKS AREA */
 footer{
     text-align:center;
     padding: 40px 20px 60px 20px;
-    background: #ffffff;
+    background: #f5f5f7; /* 少し色を変えてエリアを分かりやすく */
     border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.section-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: 0.03em;
 }
 
 .social-links{
     display:flex;
     justify-content:center;
-    gap: 20px;
+    gap: 16px;
     width: 100%;
     max-width: 400px;
     margin: 0 auto;
@@ -116,24 +136,24 @@ footer{
 .sns-btn {
     flex: 1;
     display: inline-block;
-    padding: 12px 0;
+    padding: 14px 0;
     text-decoration: none;
     font-size: 0.9rem;
     font-weight: 600;
     border-radius: 8px;
-    transition: background 0.2s ease, transform 0.1s ease;
     text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
-/* Apple風リンクデザイン */
 .tiktok {
     background: #111111;
     color: #ffffff;
 }
 
 .instagram {
-    background: #f5f5f7;
+    background: #ffffff;
     color: #1d1d1f;
+    border: 1px solid rgba(0,0,0,0.1);
 }
 
 .sns-btn:active {
@@ -143,6 +163,7 @@ footer{
 /* スマホ用の最終微調整 */
 @media(max-width: 480px) {
     .tiktok-embed {
-        min-width: 290px !important; /* 小さいスマホでもはみ出さないサイズ */
+        min-width: 290px !important;
+        height: 50vh !important;
     }
 }
