@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Contact | Mikadono</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav class="navbar">
+    <button class="menu-trigger" id="menuTrigger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <div class="logo">Mikadono</div>
+</nav>
+
+<div class="side-nav" id="sideNav">
+    <ul class="nav-links">
+        <li><a href="index.html" id="homeLink">HOME</a></li>
+        <li><a href="index.html" id="newLink">NEWS</a></li>
+        <li><a href="contact.html" id="contactLink">CONTACT</a></li>
+    </ul>
+
+    <div class="side-nav-sns">
+        <a href="https://www.tiktok.com/@mikadono3sisters" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="https://www.instagram.com/mikadono3sisters/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+    </div>
+</div>
+
+<div class="overlay" id="overlay"></div>
+
+<main class="container contact-page">
+    <div class="contact-card">
+        <h1>CONTACT</h1>
+        <p>ご質問・ご相談はこちらからお気軽にお問い合わせください。</p>
+        <form id="contactForm">
+            <label>
+                お名前
+                <input type="text" name="name" placeholder="例: 山田 太郎" required>
+            </label>
+            <label>
+                メールアドレス
+                <input type="email" name="email" placeholder="example@example.com" required>
+            </label>
+            <label>
+                お問い合わせ内容
+                <textarea name="message" rows="6" placeholder="お問い合わせ内容をご記入ください" required></textarea>
+            </label>
+            <button type="submit" class="submit-btn">送信する</button>
+        </form>
+    </div>
+</main>
+
+<script>
+    const menuTrigger = document.getElementById('menuTrigger');
+    const sideNav = document.getElementById('sideNav');
+    const overlay = document.getElementById('overlay');
+    const homeLink = document.getElementById('homeLink');
+    const newLink = document.getElementById('newLink');
+    const contactLink = document.getElementById('contactLink');
+
+    function toggleMenu() {
+        menuTrigger.classList.toggle('active');
+        sideNav.classList.toggle('active');
+        overlay.classList.toggle('active');
+    }
+
+    menuTrigger.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', toggleMenu);
+
+    homeLink.addEventListener('click', () => {
+        toggleMenu();
+    });
+
+    newLink.addEventListener('click', () => {
+        toggleMenu();
+    });
+
+    contactLink.addEventListener('click', () => {
+        toggleMenu();
+    });
+
+    const contactForm = document.getElementById('contactForm');
+    contactForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const formData = new FormData(contactForm);
+        const name = formData.get('name') || '';
+        const email = formData.get('email') || '';
+        const message = formData.get('message') || '';
+        const subject = encodeURIComponent('お問い合わせ: ' + name);
+        const body = encodeURIComponent(`お名前: ${name}\nメールアドレス: ${email}\n\n${message}`);
+        window.location.href = `mailto:mikadono3sisters@gmail.com?subject=${subject}&body=${body}`;
+    });
+</script>
+
+</body>
+</html>

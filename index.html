@@ -4,35 +4,88 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Mikadono</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<nav class="navbar">
-    <div class="logo">Mikadono</div>
-</nav>
-
-<div class="top-sns-area">
-    <div class="social-links">
-        <a href="https://www.tiktok.com/@mikadono3sisters" target="_blank" rel="noopener noreferrer" class="sns-btn tiktok">TikTok</a>
-        <a href="https://www.instagram.com/mikadono3sisters/" target="_blank" rel="noopener noreferrer" class="sns-btn instagram">Instagram</a>
+<div id="loader">
+    <div class="loader-content">
+        <div class="loader-logo">Mikadono</div>
+        <div class="loader-bar"></div>
     </div>
 </div>
 
-<main class="vlogs">
-    <div class="scroll-container">
-        <div class="card">
-            <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@mikadono3sisters" data-unique-id="mikadono3sisters" data-embed-type="creator">
-                <section>
-                    <a target="_blank" href="https://www.tiktok.com/@mikadono3sisters">@mikadono3sisters</a>
-                </section>
-            </blockquote>
-        </div>
+<nav class="navbar">
+    <button class="menu-trigger" id="menuTrigger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <div class="logo">Mikadono</div>
+</nav>
+
+<div class="side-nav" id="sideNav">
+    <ul class="nav-links">
+        <li><a href="index.html" id="homeLink">HOME</a></li>
+        <li><a href="news.html" id="newLink">NEWS</a></li>
+        <li><a href="contact.html" id="contactLink">CONTACT</a></li>
+    </ul>
+    <div class="side-nav-sns">
+        <a href="https://www.tiktok.com/@mikadono3sisters" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="https://www.instagram.com/mikadono3sisters/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+    </div>
+</div>
+
+<div class="overlay" id="overlay"></div>
+
+<main class="container">
+    <div class="new-section fade-in-up" style="animation-delay: 0.1s;">
+        <h2>NEWS</h2>
+        <p>最新情報はこちらからチェック</p>
+        <a href="news.html" class="new-link">VIEW MORE</a>
+    </div>
+
+    <div class="social-links fade-in-up" style="animation-delay: 0.25s;">
+        <a href="https://www.tiktok.com/@mikadono3sisters" target="_blank" rel="noopener noreferrer" class="sns-btn tiktok">
+            <i class="fa-brands fa-tiktok"></i>
+        </a>
+        <a href="https://www.instagram.com/mikadono3sisters/" target="_blank" rel="noopener noreferrer" class="sns-btn instagram">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
     </div>
 </main>
 
-<script async src="https://www.tiktok.com/embed.js"></script>
+<script>
+    const menuTrigger = document.getElementById('menuTrigger');
+    const sideNav = document.getElementById('sideNav');
+    const overlay = document.getElementById('overlay');
+    const homeLink = document.getElementById('homeLink');
+    const newLink = document.getElementById('newLink');
+    const contactLink = document.getElementById('contactLink');
+
+    function toggleMenu() {
+        menuTrigger.classList.toggle('active');
+        sideNav.classList.toggle('active');
+        overlay.classList.toggle('active');
+    }
+
+    menuTrigger.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', toggleMenu);
+
+    homeLink.addEventListener('click', () => { toggleMenu(); });
+    newLink.addEventListener('click', () => { toggleMenu(); });
+    contactLink.addEventListener('click', () => { toggleMenu(); });
+
+    // ⏳ ローディング画面の制御
+    window.addEventListener('load', () => {
+        const loader = document.getElementById('loader');
+        setTimeout(() => {
+            loader.classList.add('loaded');
+        }, 1200); 
+    });
+</script>
 
 </body>
 </html>
